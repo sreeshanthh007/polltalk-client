@@ -1,73 +1,127 @@
-# React + TypeScript + Vite
+# 🗳️ PollTalk Client – Real-Time Polling Application (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PollTalk Client is the **frontend application** for the PollTalk platform. It allows users to participate in polls, vote in real time, and view live poll results. The client is designed to be simple, fast, and interactive.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+### 🔹 User Side
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* 🗳️ View **static polls** (predefined questions & options)
+* ✅ Vote on polls
+* 📊 View **live poll results** (real-time updates)
+* 🔄 Automatic UI updates using sockets
+* 💬 Simple and clean user interface
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🏗️ Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* **React**
+* **TypeScript**
+* **Socket.io Client** (real-time voting & updates)
+* **CSS / Tailwind CSS** (styling)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📁 Project Structure (Simplified)
+
+  ```
+  src/
+├── components/
+│   ├── animations/
+│   │   └── TypingIndicatorAnimation.tsx
+│   │
+│   ├── client/
+│   │   ├── chat/
+│   │   │   ├── ChatHeader.tsx
+│   │   │   ├── ChatInput.tsx
+│   │   │   ├── ChatMessage.tsx
+│   │   │   └── Poll.tsx
+│   │   │
+│   │   └── form/
+│   │       └── SubmitPageForm.tsx
+│   │
+│   ├── pages/
+│   │   └── client/
+│   │       ├── SubmitPage.tsx
+│   │       └── chat/
+│   │           └── ChatPage.tsx
+│   │
+│   └── ui/
+│       ├── avatar.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       └── scroll-area.tsx
+│
+├── contexts/
+│   ├── ChatContext.tsx
+│   ├── PollContext.tsx
+│   └── SocketContext.tsx
+│
+├── lib/
+│   ├── socket.ts
+│   └── utils.ts
+│
+├── provider/
+│   ├── ChatProvider.tsx
+│   ├── PollProvider.tsx
+│   └── SocketProvider.tsx
+│
+├── routes/
+│   ├── client/
+│   │   ├── ClientRoutes.tsx
+│   │   └── PublicRoutes.tsx
+│   │
+│   └── protected/
+│       └── ClientProtectedRoutes.tsx
+│
+├── types/
+│   └── socket/
+│       └── socket.ts
+│
+└── main.tsx        # App entry point
+
+  ```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Install dependencies
+
+```
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2️⃣ Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create a `.env` file:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+VITE_SOCKET_URL=http://localhost:3000
+```
+
+### 3️⃣ Run the client
+
+```
+npm run dev
+```
+
+Open in browser:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🔗 API Integration
+* Socket.io used for real-time voting and live result updates
+
+---
+
+PollTalk Client focuses on **real-time interaction**, **simplicity**, and **instant feedback**, making it suitable for live polling, surveys, and interactive demos.
