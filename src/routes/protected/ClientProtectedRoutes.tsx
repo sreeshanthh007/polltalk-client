@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 
 
@@ -12,7 +12,7 @@ export interface Props {
 export const ProtectedRoutes = ({children}:Props)=>{
 
     if(!isAuthenticated()){
-        return <Navigate to="/login" replace/>
+        return <Navigate to="/" replace/>
     }
     return children
 }
