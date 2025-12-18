@@ -5,14 +5,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
+import { socket } from "@/lib/socket"
+import { useNavigate } from "react-router-dom"
 
 export function SubmitPageForm() {
   const [username, setUsername] = useState("")
-
+  const navigate = useNavigate()
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Login submitted with username:", username)
-  
+   
+    if(!username.trim())return
+
+    socket.connect()
+
+    socket.emit("chat:join-user",username)
+
+    localStorage.setItem("username",username.trim())
+
+    navigate("/chat")
   }
 
   return (

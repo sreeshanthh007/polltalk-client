@@ -1,4 +1,4 @@
-import { SubmitPageForm } from "@/components/client/SubmitPageForm"
+import { SubmitPageForm } from "@/components/client/form/SubmitPageForm"
 
 export default function SubmitPage() {
   return (
