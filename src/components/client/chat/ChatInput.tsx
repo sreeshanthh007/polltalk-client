@@ -23,7 +23,7 @@ export function ChatInput() {
       
       typingTimeout = setTimeout(()=>{
         stopTyping()
-      },800)
+      },1000)
     }
 
 

@@ -14,7 +14,7 @@ export interface ChatMessage {
 export interface PollOption {
   id: number;
   text: string;
-  votes: number;
+  vote: number;
 }
 
 export interface Poll {
@@ -33,5 +33,6 @@ export interface ServerToClientEvents {
     "chat:newMessages": (message: ChatMessage) => void;
     "chat:history": (messages: ChatMessage[]) => void;
     "chat:typing": (data:{username:string,isTyping:boolean}) => void;
-    "poll:update": (poll: Poll) => void;
+    "poll:update": (updatedOption: PollOption) => void;
+    "poll:data": (poll: Poll) => void;
 }

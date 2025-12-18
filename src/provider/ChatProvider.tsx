@@ -53,11 +53,8 @@ export const ChatProvider = ({children}:Props)=>{
             socket?.off("chat:typing")
 
         }
-    },[]) 
+    },[socket]) 
 
-
-
-    
 
       const startTyping = () => {
         socket?.emit("chat:start-typing",true);
@@ -73,6 +70,7 @@ export const ChatProvider = ({children}:Props)=>{
     }
 
     
+
     return (
        <ChatContext.Provider
        
