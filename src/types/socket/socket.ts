@@ -26,6 +26,7 @@ export interface ClientToServerEvents {
   "chat:join-user": (username: string) => void;
   "chat:send": (text: string) => void;
   "poll:vote": (optionId: number) => void;
+  "poll:unvote": (optionId: number) => void;
   "chat:start-typing": (isTyping:boolean) => void;
 }
 

@@ -6,6 +6,7 @@ import type { Poll } from "@/types/socket/socket";
 interface PollContextType {
   poll: Poll | null;
   vote: (optionId: number) => void;
+  unvote:(optionId:number)=>void;  
 }
 
 export const PollContext = createContext<PollContextType | null>(null);
