@@ -51,11 +51,16 @@
             socket?.emit("poll:vote",optionId)
         }
 
+        const unvote = (optionId:number)=>{
+            socket?.emit("poll:unvote",optionId)
+        }
+
 
 
         return (
             <PollContext.Provider value={{
             vote,
+            unvote,
             poll
             }}>
             {children}

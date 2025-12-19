@@ -24,7 +24,8 @@ export const ChatProvider = ({children}:Props)=>{
 
     useEffect(()=>{
 
-        
+        if(!socket) return;
+
         socket?.on("chat:history",(history:ChatMessage[])=>{
             setMessages(history)
         })
@@ -53,7 +54,7 @@ export const ChatProvider = ({children}:Props)=>{
             socket?.off("chat:typing")
 
         }
-    },[socket]) 
+    },[]) 
 
 
       const startTyping = () => {

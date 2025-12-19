@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Poll } from "./Poll"
 
 export function ChatHeader() {
-  const [showPoll, setShowPoll] = useState(true)
+  const [showPoll, setShowPoll] = useState(false)
 
   return (
     <header className="border-b border-border/50 bg-card/80 backdrop-blur-sm">
@@ -30,10 +30,8 @@ export function ChatHeader() {
       </div>
 
       {showPoll && (
-        <div className="border-t border-border/30 bg-background/30 p-4">
-          <div className="mx-auto max-w-2xl">
-            <Poll />
-          </div>
+        <div className="border-t border-border/30 bg-background/30 px-4 py-3">
+          <Poll />
         </div>
       )}
     </header>
