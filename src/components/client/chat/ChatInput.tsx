@@ -1,7 +1,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Send, Plus } from "lucide-react"
@@ -12,26 +12,27 @@ export function ChatInput() {
 
     const {sendMessage,startTyping,stopTyping} = useChat();
 
-    let typingTimeout: NodeJS.Timeout | null = null
+   const typingTimeoutRef = useRef<number | null>(null);
+
 
     
-    const handleTyping = ()=>{
-  
-      startTyping();
-  
-      if(typingTimeout) clearTimeout(typingTimeout)
-      
-      typingTimeout = setTimeout(()=>{
-        stopTyping()
-      },1000)
+    const handleTyping = () => {
+        startTyping();
+
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
     }
 
+    typingTimeoutRef.current = window.setTimeout(() => {
+      stopTyping();
+    }, 1000);
+  };
 
   const handleSend = () => {
     if (text.trim()) {
         sendMessage(text.trim())
         setText("")
-    if (typingTimeout) clearTimeout(typingTimeout)
+    if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current)
     stopTyping()
     }
   }
