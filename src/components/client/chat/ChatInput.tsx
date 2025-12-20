@@ -4,7 +4,7 @@ import type React from "react"
 import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Send, Plus } from "lucide-react"
+import { Send } from "lucide-react"
 import { useChat } from "@/contexts/ChatContext"
 
 export function ChatInput() {
@@ -52,7 +52,6 @@ export function ChatInput() {
     <div className="border-t border-border/50 bg-card/80 px-4 py-4 backdrop-blur-sm">
       <div className="mx-auto flex max-w-3xl items-center gap-3">
         <Button variant="ghost" size="icon" className="h-10 w-10 shrink-0">
-          <Plus className="h-5 w-5" />
         </Button>
         <div className="relative flex-1">
           <Input
